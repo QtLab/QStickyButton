@@ -15,15 +15,11 @@ install:
   - '"%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\bin\amd64\vcvars64.bat" x64'
 
 build_script:
-  - dir
   - mkdir build
   - cd build
   - QMAKE ../QStickyButton.pro
   - NMAKE
-  - dir
-  - CD ..
-  - COPY build\release\QStickyButton.exe .
 
 artifacts:
-  - path: QStickyButton.exe
+  - path: build\release\QStickyButton.exe
     name: QStickyButton.exe
