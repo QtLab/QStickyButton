@@ -14,9 +14,9 @@ A quick flash of the actual button...
 
 [badge-license]:            https://img.shields.io/badge/license-GPLv3-blue.svg
 [license]:                  https://github.com/vidavidorra/QStickyButton/blob/master/LICENSE
-[badge-appveyor]:           https://ci.appveyor.com/api/projects/status/730ef5s733aaoyyp?svg=true
+[badge-appveyor]:           https://ci.appveyor.com/api/projects/status/0ut81ggljxu3mwsx?svg=true
 [appveyor]:                 https://ci.appveyor.com/project/vidavidorra/qstickybutton
 [badge-travis]:             https://travis-ci.org/vidavidorra/QStickyButton.svg?branch=master
 [travis]:                   https://travis-ci.org/vidavidorra/QStickyButton
-[documentation]:            http://vidavidorra.github.io/BitOperations/html/index.html
+[documentation]:            http://vidavidorra.github.io/QStickyButton/html/index.html
 [the-button]:               docs/img/QStickyButton_small.gif?raw=true
