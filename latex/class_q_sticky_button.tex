@@ -1,0 +1,281 @@
+\hypertarget{class_q_sticky_button}{\section{Q\-Sticky\-Button Class Reference}
+\label{class_q_sticky_button}\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}}
+}
+
+
+The \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} class implements a custom button with click and hold capability.  
+
+
+
+
+{\ttfamily \#include $<$Q\-Sticky\-Button.\-h$>$}
+
+
+
+Inheritance diagram for Q\-Sticky\-Button\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_q_sticky_button__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\-Sticky\-Button\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_q_sticky_button__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_sticky_button_a694a4a05275faf028d6e29e2a10fe059}{set\-Checked} (bool pressed)
+\begin{DoxyCompactList}\small\item\em Set the checked state of the sticky button. \end{DoxyCompactList}\item 
+bool \hyperlink{class_q_sticky_button_a33b2e4842a6c2ddd55e0c9f5425942ba}{is\-Checked} () const 
+\begin{DoxyCompactList}\small\item\em Get the checked or pressed status of the sticky button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_sticky_button_ab47e7e8f739b82d34cceb4f5f2ccb101}{toggled} (bool checked) const 
+\begin{DoxyCompactList}\small\item\em Toggled signal for the lockbutton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_sticky_button_ac2c3029091cc02ebcb32897511adbcb1}{Q\-Sticky\-Button} (Q\-Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_q_sticky_button_ad5912bd79a895579588961f9e9d73572}{$\sim$\-Q\-Sticky\-Button} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_sticky_button_a5bac733cac165aac0b181a5b5d5976a3}{set\-Title} (const Q\-String \&\hyperlink{class_q_sticky_button_ad4ce92181d1cceab37cecdce54249e24}{title})
+\begin{DoxyCompactList}\small\item\em Set the title of the pushbutton. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{title} () const 
+\begin{DoxyCompactList}\small\item\em Get the title of the pushbutton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Q\-String \hyperlink{class_q_sticky_button_ad4ce92181d1cceab37cecdce54249e24}{title}
+\begin{DoxyCompactList}\small\item\em Title property of the pushbutton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} class implements a custom button with click and hold capability. 
+
+\begin{DoxyAuthor}{Author}
+Jeroen de Bruijn 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0.\-0
+\end{DoxyVersion}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{index_button_example_section}{The button} for the button and example implementation. 
+\end{DoxySeeAlso}
+
+
+Definition at line 53 of file Q\-Sticky\-Button.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_q_sticky_button_ac2c3029091cc02ebcb32897511adbcb1}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!Q\-Sticky\-Button@{Q\-Sticky\-Button}}
+\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{Q\-Sticky\-Button}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Sticky\-Button\-::\-Q\-Sticky\-Button (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{class_q_sticky_button_ac2c3029091cc02ebcb32897511adbcb1}
+
+
+Default constructor. 
+
+The system's default constructor. 
+
+Definition at line 35 of file Q\-Sticky\-Button.\-cpp.
+
+
+\begin{DoxyCode}
+35                                             :
+36     QWidget(parent),
+37     ui(\textcolor{keyword}{new} Ui::QStickyButton)
+38 \{
+39     ui->setupUi(\textcolor{keyword}{this});
+40     \textcolor{comment}{/* Correct the minimum height of the lockbutton. Normally it jumps to 24,}
+41 \textcolor{comment}{     * which results in an ugly difference to the pushbutton.}
+42 \textcolor{comment}{     */}
+43     ui->lockStickyButton->setMinimumHeight(23);
+44 
+45     connect(ui->pushStickyButton, &QPushButton::pressed,
+46             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{true}); \});
+47     connect(ui->pushStickyButton, &QPushButton::released,
+48             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{false}); \});
+49     connect(ui->lockStickyButton, &QPushButton::toggled,
+50             \textcolor{keyword}{this}, &QStickyButton::onLockToggle);
+51 \}
+\end{DoxyCode}
+\hypertarget{class_q_sticky_button_ad5912bd79a895579588961f9e9d73572}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!$\sim$\-Q\-Sticky\-Button@{$\sim$\-Q\-Sticky\-Button}}
+\index{$\sim$\-Q\-Sticky\-Button@{$\sim$\-Q\-Sticky\-Button}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{$\sim$\-Q\-Sticky\-Button}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Sticky\-Button\-::$\sim$\-Q\-Sticky\-Button (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_sticky_button_ad5912bd79a895579588961f9e9d73572}
+
+
+Default destructor. 
+
+The system's default destructor. 
+
+Definition at line 53 of file Q\-Sticky\-Button.\-cpp.
+
+
+\begin{DoxyCode}
+54 \{
+55     \textcolor{keyword}{delete} ui;
+56 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_q_sticky_button_a33b2e4842a6c2ddd55e0c9f5425942ba}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!is\-Checked@{is\-Checked}}
+\index{is\-Checked@{is\-Checked}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{is\-Checked}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\-Sticky\-Button\-::is\-Checked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_q_sticky_button_a33b2e4842a6c2ddd55e0c9f5425942ba}
+
+
+Get the checked or pressed status of the sticky button. 
+
+\begin{DoxyReturn}{Returns}
+Current status, checked or being pressed, of the sticky button. 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file Q\-Sticky\-Button.\-cpp.
+
+
+\begin{DoxyCode}
+112 \{
+113     \textcolor{keywordflow}{return} (ui->pushStickyButton->isChecked()                                  |
+114             ui->lockStickyButton->isChecked());
+115 \}
+\end{DoxyCode}
+\hypertarget{class_q_sticky_button_a694a4a05275faf028d6e29e2a10fe059}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!set\-Checked@{set\-Checked}}
+\index{set\-Checked@{set\-Checked}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{set\-Checked}]{\setlength{\rightskip}{0pt plus 5cm}void Q\-Sticky\-Button\-::set\-Checked (
+\begin{DoxyParamCaption}
+\item[{bool}]{pressed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_q_sticky_button_a694a4a05275faf028d6e29e2a10fe059}
+
+
+Set the checked state of the sticky button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pressed} & State to set the sticky button to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file Q\-Sticky\-Button.\-cpp.
+
+
+\begin{DoxyCode}
+95 \{
+96     \textcolor{keywordflow}{if} (pressed) \{
+97         ui->pushStickyButton->setCheckable(\textcolor{keyword}{true});
+98         ui->pushStickyButton->setChecked(\textcolor{keyword}{true});
+99         ui->lockStickyButton->setChecked(\textcolor{keyword}{true});
+100     \} \textcolor{keywordflow}{else} \{
+101         \textcolor{comment}{/* Need to uncheck before setting it uncheckable. Otherwise the button}
+102 \textcolor{comment}{         * remains checked.}
+103 \textcolor{comment}{         */}
+104         ui->pushStickyButton->setChecked(\textcolor{keyword}{false});
+105         ui->pushStickyButton->setCheckable(\textcolor{keyword}{false});
+106         ui->lockStickyButton->setChecked(\textcolor{keyword}{false});
+107     \}
+108 \}
+\end{DoxyCode}
+\hypertarget{class_q_sticky_button_a5bac733cac165aac0b181a5b5d5976a3}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!set\-Title@{set\-Title}}
+\index{set\-Title@{set\-Title}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{set\-Title}]{\setlength{\rightskip}{0pt plus 5cm}void Q\-Sticky\-Button\-::set\-Title (
+\begin{DoxyParamCaption}
+\item[{const Q\-String \&}]{title}
+\end{DoxyParamCaption}
+)}}\label{class_q_sticky_button_a5bac733cac165aac0b181a5b5d5976a3}
+
+
+Set the title of the pushbutton. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 59 of file Q\-Sticky\-Button.\-cpp.
+
+
+\begin{DoxyCode}
+60 \{
+61     ui->pushStickyButton->setText(\hyperlink{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{title});
+62 \}
+\end{DoxyCode}
+\hypertarget{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!title@{title}}
+\index{title@{title}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{title}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Q\-Sticky\-Button\-::title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}
+
+
+Get the title of the pushbutton. 
+
+\begin{DoxyReturn}{Returns}
+Title of the pushbutton. 
+\end{DoxyReturn}
+\hypertarget{class_q_sticky_button_ab47e7e8f739b82d34cceb4f5f2ccb101}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!toggled@{toggled}}
+\index{toggled@{toggled}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{toggled}]{\setlength{\rightskip}{0pt plus 5cm}void Q\-Sticky\-Button\-::toggled (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_q_sticky_button_ab47e7e8f739b82d34cceb4f5f2ccb101}
+
+
+Toggled signal for the lockbutton. 
+
+As the name of the signal probably gives away, this signal is only emitted when the state of the button changes i.\-e. is toggled from one state to another. 
+\begin{DoxyParams}{Parameters}
+{\em checked} & State to set the lockbutton to. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{class_q_sticky_button_ad4ce92181d1cceab37cecdce54249e24}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!title@{title}}
+\index{title@{title}!QStickyButton@{Q\-Sticky\-Button}}
+\subsubsection[{title}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Q\-Sticky\-Button\-::title\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [write]}}}\label{class_q_sticky_button_ad4ce92181d1cceab37cecdce54249e24}
+
+
+Title property of the pushbutton. 
+
+\begin{DoxyNote}{Note}
+This property can be set by adding a {\ttfamily Dynamic Property}, with the {\ttfamily Property Name} set to {\ttfamily title} and the {\ttfamily Property Type} set to {\ttfamily String}, to the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}. 
+\end{DoxyNote}
+
+
+Definition at line 64 of file Q\-Sticky\-Button.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_q_sticky_button_8h}{Q\-Sticky\-Button.\-h}\item 
+source/src/\hyperlink{_q_sticky_button_8cpp}{Q\-Sticky\-Button.\-cpp}\end{DoxyCompactItemize}

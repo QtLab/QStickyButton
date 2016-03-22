@@ -1,0 +1,138 @@
+\hypertarget{class_main_window}{\section{Main\-Window Class Reference}
+\label{class_main_window}\index{Main\-Window@{Main\-Window}}
+}
+
+
+The \hyperlink{class_main_window}{Main\-Window} class shows an example implementation of the Q\-S\-Ticky\-Button with all the capabilities used.  
+
+
+
+
+{\ttfamily \#include $<$Main\-Window.\-h$>$}
+
+
+
+Inheritance diagram for Main\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_main_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Main\-Window\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_main_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_main_window_a648ea2bfab3eef2287c28a76a8e86948}{user\-Function} (bool sticky\-Button\-State)
+\begin{DoxyCompactList}\small\item\em Example user function that is called when the state of the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} has changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}{Main\-Window} (Q\-Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{$\sim$\-Main\-Window} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_main_window}{Main\-Window} class shows an example implementation of the Q\-S\-Ticky\-Button with all the capabilities used. 
+
+Definition at line 48 of file Main\-Window.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}{\index{Main\-Window@{Main\-Window}!Main\-Window@{Main\-Window}}
+\index{Main\-Window@{Main\-Window}!MainWindow@{Main\-Window}}
+\subsubsection[{Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}Main\-Window\-::\-Main\-Window (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}
+
+
+Default constructor. 
+
+The system's default constructor. 
+
+Definition at line 35 of file Main\-Window.\-cpp.
+
+
+\begin{DoxyCode}
+35                                       :
+36     QMainWindow(parent),
+37     ui(\textcolor{keyword}{new} Ui::MainWindow)
+38 \{
+39     ui->setupUi(\textcolor{keyword}{this});
+40 
+41     connect(ui->stickyButton, &\hyperlink{class_q_sticky_button_ab47e7e8f739b82d34cceb4f5f2ccb101}{QStickyButton::toggled},
+42                 \textcolor{keyword}{this}, &\hyperlink{class_main_window_a648ea2bfab3eef2287c28a76a8e86948}{MainWindow::userFunction});
+43 \}
+\end{DoxyCode}
+\hypertarget{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\index{Main\-Window@{Main\-Window}!$\sim$\-Main\-Window@{$\sim$\-Main\-Window}}
+\index{$\sim$\-Main\-Window@{$\sim$\-Main\-Window}!MainWindow@{Main\-Window}}
+\subsubsection[{$\sim$\-Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}Main\-Window\-::$\sim$\-Main\-Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}
+
+
+Default destructor. 
+
+The system's default destructor. 
+
+Definition at line 45 of file Main\-Window.\-cpp.
+
+
+\begin{DoxyCode}
+46 \{
+47     \textcolor{keyword}{delete} ui;
+48 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_main_window_a648ea2bfab3eef2287c28a76a8e86948}{\index{Main\-Window@{Main\-Window}!user\-Function@{user\-Function}}
+\index{user\-Function@{user\-Function}!MainWindow@{Main\-Window}}
+\subsubsection[{user\-Function}]{\setlength{\rightskip}{0pt plus 5cm}void Main\-Window\-::user\-Function (
+\begin{DoxyParamCaption}
+\item[{bool}]{sticky\-Button\-State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_main_window_a648ea2bfab3eef2287c28a76a8e86948}
+
+
+Example user function that is called when the state of the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} has changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sticky\-Button\-State} & The current state of the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file Main\-Window.\-cpp.
+
+
+\begin{DoxyCode}
+51 \{
+52     QString boolText = stickyButtonState ? \textcolor{stringliteral}{"true"} : \textcolor{stringliteral}{"false"};
+53     ui->buttonStateLine->setText(boolText);
+54 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_main_window_8h}{Main\-Window.\-h}\item 
+source/src/\hyperlink{_main_window_8cpp}{Main\-Window.\-cpp}\end{DoxyCompactItemize}

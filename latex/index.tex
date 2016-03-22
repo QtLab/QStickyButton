@@ -1,0 +1,69 @@
+This is the documentation of a custom widget for the \href{http://www.qt.io/}{\tt Qt Framework}. It contains the actual documentation of the Q\-Sticky\-Widget and an example implementation with all the capabilities of the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} used.\hypertarget{index_button_example_section}{}\section{The button}\label{index_button_example_section}
+\begin{DoxyParagraph}{The button}
+Below is the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button} shown as an animated image. This shows both the unlocked and locked state of the button. 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Implemented button.}
+Below is the example implementation shown, using all the capabilities of the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}. 
+\end{DoxyParagraph}
+\hypertarget{index_usage_section}{}\section{Usage}\label{index_usage_section}
+
+\begin{DoxyEnumerate}
+\item Adding the source files to the destination Qt Project.
+\begin{DoxyItemize}
+\item The needed source files should be placed in the source code directory of a project. See the file tree below, which is from the example implementation. Project folder\-:
+\begin{DoxyItemize}
+\item Q\-Sticky\-Button.\-pro
+\item Q\-Sticky\-Button.\-qrc
+\item img
+\begin{DoxyItemize}
+\item Lock\-Closed.\-png
+\item Lock\-Opened.\-png
+\end{DoxyItemize}
+\item source
+\begin{DoxyItemize}
+\item \hyperlink{_main_window_8h}{Main\-Window.\-h}
+\item \hyperlink{_q_sticky_button_8h}{Q\-Sticky\-Button.\-h}
+\item src
+\begin{DoxyItemize}
+\item \hyperlink{_main_window_8cpp}{Main\-Window.\-cpp}
+\item \hyperlink{_q_sticky_button_8cpp}{Q\-Sticky\-Button.\-cpp}
+\item main.\-cpp
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item ui
+\begin{DoxyItemize}
+\item Main\-Window.\-ui
+\item Q\-Sticky\-Button.\-ui Note that the image files ({\ttfamily img/\-Lock\-Closed.\-png}, and {\ttfamily img/\-Lock\-Opened.\-png}) also need to be placed in the source code directory.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Add {\ttfamily Q\-Sticky\-Button.\-ui}, \hyperlink{_q_sticky_button_8h}{Q\-Sticky\-Button.\-h}, \hyperlink{_q_sticky_button_8cpp}{Q\-Sticky\-Button.\-cpp}, and {\ttfamily Q\-Sticky\-Button.\-qrc} to the Qt project as shown below. 
+\end{DoxyItemize}
+\item Create a standard widget in the destination {\ttfamily ui}.
+\item Promote the standard widget to the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}.
+\begin{DoxyItemize}
+\item Right click on the {\ttfamily Q\-Widget} and go to {\ttfamily Promote to ...}
+\item As {\ttfamily Promoted class name} enter\begin{DoxyVerb}QStickyButton \end{DoxyVerb}
+
+\item It will automatically select {\ttfamily \hyperlink{_q_sticky_button_8h}{Q\-Sticky\-Button.\-h}} as {\ttfamily Header file}
+\item Click on {\ttfamily Promote}
+\end{DoxyItemize}
+\item Add the title property to the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}.
+\begin{DoxyItemize}
+\item Select {\ttfamily Add Dynamic Property} in the {\ttfamily Property Editor} (just below the {\ttfamily Object Inspector}) and add a {\ttfamily String...}
+\item Enter\begin{DoxyVerb}title \end{DoxyVerb}
+ as {\ttfamily Property Name} and make sure that the {\ttfamily Property Type} is set to {\ttfamily String}.
+\item Click {\ttfamily O\-K} to add the dynamic property to the \hyperlink{class_q_sticky_button}{Q\-Sticky\-Button}.
+\item In the {\ttfamily Property Editor} scroll all the way to the bottom to see the created property, and set a title
+\end{DoxyItemize}
+\item Connect and use the button. Now the button can be connected to a {\ttfamily slot}, for example
+\begin{DoxyCode}
+\textcolor{keywordtype}{void} userFunction(\textcolor{keywordtype}{bool} stickyButtonState); 
+\end{DoxyCode}
+ by adding
+\begin{DoxyCode}
+connect(ui->stickyButton, &\hyperlink{class_q_sticky_button_ab47e7e8f739b82d34cceb4f5f2ccb101}{QStickyButton::toggled},
+        \textcolor{keyword}{this}, &\hyperlink{class_main_window_a648ea2bfab3eef2287c28a76a8e86948}{MainWindow::userFunction}); 
+\end{DoxyCode}
+ to the window constructor.
+\end{DoxyEnumerate}\hypertarget{index_licensing}{}\section{Licensing}\label{index_licensing}
+G\-N\-U General Public License version 3 or later, as published by the Free Software Foundation. Modification and redistribution are permitted according to the terms of the G\-P\-L. The short license can be found in the \hyperlink{license}{license} section, and the full license can be found in the {\ttfamily L\-I\-C\-E\-N\-S\-E} file. 
