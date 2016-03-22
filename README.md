@@ -6,9 +6,9 @@
 A sticky button, with click and hold capabilities for the [Qt Framework](http://www.qt.io/).
 
 ## Documentation
-The documentation can be found at the [documentation webpage][documentation] (coming soon...).
+The documentation can be found at the [documentation webpage][documentation].
 
-A quick flash of the button...  
+A quick flash of the actual button...  
 ![Quick flash][the-button]
 
 

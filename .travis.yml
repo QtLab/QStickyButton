@@ -8,12 +8,21 @@ branches:
   except:
     - gh-pages
 
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: QStickyButton
+    - DOXYFILE: $TRAVIS_BUILD_DIR/docs/Doxyfile
+    - GH_REPO_REF: github.com/vidavidorra/QStickyButton.git
+
 # Install dependencies
 addons:
   apt:
     packages:
       - graphviz
       - doxygen
+      - doxygen-latex
+      - doxygen-doc
 
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
@@ -35,3 +44,9 @@ script:
   - mkdir build && cd build
   - /opt/qt56/bin/qmake QMAKE_CC=gcc-5 QMAKE_CXX=g++-5 ../QStickyButton.pro
   - make
+
+# Generate and deploy documentation
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
