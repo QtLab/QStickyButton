@@ -1,0 +1,55 @@
+/** @mainpage
+ * This is the documentation of a custom widget for the <a href="http://www.qt.io/" target='_blank'>Qt Framework</a>.
+ * It contains the actual documentation of the QStickyWidget and an example implementation with all the capabilities of the QStickyButton used.
+ * 
+ * @section button_example_section The button
+ * @par The button
+ * Below is the QStickyButton shown as an animated image. This shows both the unlocked and locked state of the button.
+ * @image html "QStickyButton_small.gif"
+ *
+ * @par Implemented button.
+ * Below is the example implementation shown, using all the capabilities of the QStickyButton.
+ * @image html "QStickyButton Window_small.png"
+ *
+ * @section usage_section Usage
+ * -# Adding the source files to the destination Qt Project.
+ *    - The needed source files should be placed in the source code directory of a project. See the file tree below, which is from the example implementation.  
+ *      Project folder:
+ *      - QStickyButton.pro
+ *      - QStickyButton.qrc
+ *      - img
+ *        - LockClosed.png
+ *        - LockOpened.png
+ *      - source
+ *        - MainWindow.h
+ *        - QStickyButton.h
+ *        - src
+ *          - MainWindow.cpp
+ *          - QStickyButton.cpp
+ *          - main.cpp
+ *      - ui
+ *        - MainWindow.ui
+ *        - QStickyButton.ui
+ *      Note that the image files (`img/LockClosed.png`, and `img/LockOpened.png`) also need to be placed in the source code directory.
+ *    - Add `QStickyButton.ui`, QStickyButton.h, QStickyButton.cpp, and `QStickyButton.qrc` to the Qt project as shown below.
+ *      @image html "AddSourceFile_small.png"
+ * -# Create a standard widget in the destination `ui`.
+ * -# Promote the standard widget to the QStickyButton.
+ *    - Right click on the `QWidget` and go to `Promote to ...`
+ *    - As `Promoted class name` enter @verbatim QStickyButton @endverbatim
+ *    - It will automatically select `QStickyButton.h` as `Header file`
+ *    - Click on `Promote`
+ * -# Add the title property to the QStickyButton.
+ *    - Select `Add Dynamic Property` in the `Property Editor` (just below the `Object Inspector`) and add a `String...`
+ *    - Enter @verbatim title @endverbatim as `Property Name` and make sure that the `Property Type` is set to `String`.
+ *    - Click `OK` to add the dynamic property to the QStickyButton.
+ *    - In the `Property Editor` scroll all the way to the bottom to see the created property, and set a title
+ * -# Connect and use the button.
+ *    Now the button can be connected to a `slot`, for example @code{.h} void userFunction(bool stickyButtonState); @endcode by adding @code{.cpp} connect(ui->stickyButton, &QStickyButton::toggled,
+ *          this, &MainWindow::userFunction); @endcode to the window constructor.
+ *
+ * @section licensing Licensing
+ * GNU General Public License version 3 or later, as published by the Free Software Foundation.  
+ * Modification and redistribution are permitted according to the terms of the GPL.  
+ * The short license can be found in the  \ref license "license" section, and the full license can be found in the `LICENSE` file.
+ */

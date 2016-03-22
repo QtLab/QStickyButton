@@ -1,0 +1,29 @@
+version: '{build}'
+clone_folder: C:\projects\
+
+# Blacklist
+branches:
+  except:
+    - gh-pages
+
+environment:
+  QTDIR: C:\Qt\5.5\msvc2013_64
+
+install:
+  - dir c:\Qt
+  - SET PATH=%PATH%;%QTDIR%\bin;%ProgramFiles(x86)%\WiX Toolset v3.10\bin;
+  - '"%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\bin\amd64\vcvars64.bat" x64'
+
+build_script:
+  - dir
+  - mkdir build
+  - cd build
+  - QMAKE ../QStickyButton.pro
+  - NMAKE
+  - dir
+  - CD ..
+  - COPY build\release\QStickyButton.exe .
+
+artifacts:
+  - path: QStickyButton.exe
+    name: QStickyButton.exe
