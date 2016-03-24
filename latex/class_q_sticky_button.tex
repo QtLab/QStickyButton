@@ -101,18 +101,20 @@ Definition at line 35 of file Q\-Sticky\-Button.\-cpp.
 37     ui(\textcolor{keyword}{new} Ui::QStickyButton)
 38 \{
 39     ui->setupUi(\textcolor{keyword}{this});
-40     \textcolor{comment}{/* Correct the minimum height of the lockbutton. Normally it jumps to 24,}
-41 \textcolor{comment}{     * which results in an ugly difference to the pushbutton.}
-42 \textcolor{comment}{     */}
-43     ui->lockStickyButton->setMinimumHeight(23);
-44 
-45     connect(ui->pushStickyButton, &QPushButton::pressed,
-46             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{true}); \});
-47     connect(ui->pushStickyButton, &QPushButton::released,
-48             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{false}); \});
-49     connect(ui->lockStickyButton, &QPushButton::toggled,
-50             \textcolor{keyword}{this}, &QStickyButton::onLockToggle);
-51 \}
+40     \textcolor{comment}{/* Correct the minimum and maximum height of the lockbutton. Normally it}
+41 \textcolor{comment}{     * jumps to 24, which results in an ugly difference to the pushbutton's}
+42 \textcolor{comment}{     * height (normally 23).}
+43 \textcolor{comment}{     */}
+44     ui->lockStickyButton->setMinimumHeight(23);
+45     ui->lockStickyButton->setMaximumHeight(23);
+46 
+47     connect(ui->pushStickyButton, &QPushButton::pressed,
+48             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{true}); \});
+49     connect(ui->pushStickyButton, &QPushButton::released,
+50             [\textcolor{keyword}{this}]\{ QStickyButton::onPushChanged(\textcolor{keyword}{false}); \});
+51     connect(ui->lockStickyButton, &QPushButton::toggled,
+52             \textcolor{keyword}{this}, &QStickyButton::onLockToggle);
+53 \}
 \end{DoxyCode}
 \hypertarget{class_q_sticky_button_ad5912bd79a895579588961f9e9d73572}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!$\sim$\-Q\-Sticky\-Button@{$\sim$\-Q\-Sticky\-Button}}
 \index{$\sim$\-Q\-Sticky\-Button@{$\sim$\-Q\-Sticky\-Button}!QStickyButton@{Q\-Sticky\-Button}}
@@ -127,13 +129,13 @@ Default destructor.
 
 The system's default destructor. 
 
-Definition at line 53 of file Q\-Sticky\-Button.\-cpp.
+Definition at line 55 of file Q\-Sticky\-Button.\-cpp.
 
 
 \begin{DoxyCode}
-54 \{
-55     \textcolor{keyword}{delete} ui;
-56 \}
+56 \{
+57     \textcolor{keyword}{delete} ui;
+58 \}
 \end{DoxyCode}
 
 
@@ -154,14 +156,14 @@ Current status, checked or being pressed, of the sticky button.
 \end{DoxyReturn}
 
 
-Definition at line 111 of file Q\-Sticky\-Button.\-cpp.
+Definition at line 113 of file Q\-Sticky\-Button.\-cpp.
 
 
 \begin{DoxyCode}
-112 \{
-113     \textcolor{keywordflow}{return} (ui->pushStickyButton->isChecked()                                  |
-114             ui->lockStickyButton->isChecked());
-115 \}
+114 \{
+115     \textcolor{keywordflow}{return} (ui->pushStickyButton->isChecked()                                  |
+116             ui->lockStickyButton->isChecked());
+117 \}
 \end{DoxyCode}
 \hypertarget{class_q_sticky_button_a694a4a05275faf028d6e29e2a10fe059}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!set\-Checked@{set\-Checked}}
 \index{set\-Checked@{set\-Checked}!QStickyButton@{Q\-Sticky\-Button}}
@@ -181,24 +183,24 @@ Set the checked state of the sticky button.
 \end{DoxyParams}
 
 
-Definition at line 94 of file Q\-Sticky\-Button.\-cpp.
+Definition at line 96 of file Q\-Sticky\-Button.\-cpp.
 
 
 \begin{DoxyCode}
-95 \{
-96     \textcolor{keywordflow}{if} (pressed) \{
-97         ui->pushStickyButton->setCheckable(\textcolor{keyword}{true});
-98         ui->pushStickyButton->setChecked(\textcolor{keyword}{true});
-99         ui->lockStickyButton->setChecked(\textcolor{keyword}{true});
-100     \} \textcolor{keywordflow}{else} \{
-101         \textcolor{comment}{/* Need to uncheck before setting it uncheckable. Otherwise the button}
-102 \textcolor{comment}{         * remains checked.}
-103 \textcolor{comment}{         */}
-104         ui->pushStickyButton->setChecked(\textcolor{keyword}{false});
-105         ui->pushStickyButton->setCheckable(\textcolor{keyword}{false});
-106         ui->lockStickyButton->setChecked(\textcolor{keyword}{false});
-107     \}
-108 \}
+97 \{
+98     \textcolor{keywordflow}{if} (pressed) \{
+99         ui->pushStickyButton->setCheckable(\textcolor{keyword}{true});
+100         ui->pushStickyButton->setChecked(\textcolor{keyword}{true});
+101         ui->lockStickyButton->setChecked(\textcolor{keyword}{true});
+102     \} \textcolor{keywordflow}{else} \{
+103         \textcolor{comment}{/* Need to uncheck before setting it uncheckable. Otherwise the button}
+104 \textcolor{comment}{         * remains checked.}
+105 \textcolor{comment}{         */}
+106         ui->pushStickyButton->setChecked(\textcolor{keyword}{false});
+107         ui->pushStickyButton->setCheckable(\textcolor{keyword}{false});
+108         ui->lockStickyButton->setChecked(\textcolor{keyword}{false});
+109     \}
+110 \}
 \end{DoxyCode}
 \hypertarget{class_q_sticky_button_a5bac733cac165aac0b181a5b5d5976a3}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!set\-Title@{set\-Title}}
 \index{set\-Title@{set\-Title}!QStickyButton@{Q\-Sticky\-Button}}
@@ -218,13 +220,13 @@ Set the title of the pushbutton.
 \end{DoxyParams}
 
 
-Definition at line 59 of file Q\-Sticky\-Button.\-cpp.
+Definition at line 61 of file Q\-Sticky\-Button.\-cpp.
 
 
 \begin{DoxyCode}
-60 \{
-61     ui->pushStickyButton->setText(\hyperlink{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{title});
-62 \}
+62 \{
+63     ui->pushStickyButton->setText(\hyperlink{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{title});
+64 \}
 \end{DoxyCode}
 \hypertarget{class_q_sticky_button_a32a1b2b10c91b85f96e8e01876a81c18}{\index{Q\-Sticky\-Button@{Q\-Sticky\-Button}!title@{title}}
 \index{title@{title}!QStickyButton@{Q\-Sticky\-Button}}

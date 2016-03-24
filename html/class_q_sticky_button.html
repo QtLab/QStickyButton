@@ -196,18 +196,20 @@ Properties</h2></td></tr>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ui(<span class="keyword">new</span> Ui::QStickyButton)</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ui-&gt;setupUi(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">/* Correct the minimum height of the lockbutton. Normally it jumps to 24,</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     * which results in an ugly difference to the pushbutton.</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ui-&gt;lockStickyButton-&gt;setMinimumHeight(23);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    connect(ui-&gt;pushStickyButton, &amp;QPushButton::pressed,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            [<span class="keyword">this</span>]{ QStickyButton::onPushChanged(<span class="keyword">true</span>); });</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    connect(ui-&gt;pushStickyButton, &amp;QPushButton::released,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            [<span class="keyword">this</span>]{ QStickyButton::onPushChanged(<span class="keyword">false</span>); });</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    connect(ui-&gt;lockStickyButton, &amp;QPushButton::toggled,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">this</span>, &amp;QStickyButton::onLockToggle);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">/* Correct the minimum and maximum height of the lockbutton. Normally it</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     * jumps to 24, which results in an ugly difference to the pushbutton&#39;s</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * height (normally 23).</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    ui-&gt;lockStickyButton-&gt;setMinimumHeight(23);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    ui-&gt;lockStickyButton-&gt;setMaximumHeight(23);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    connect(ui-&gt;pushStickyButton, &amp;QPushButton::pressed,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            [<span class="keyword">this</span>]{ QStickyButton::onPushChanged(<span class="keyword">true</span>); });</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    connect(ui-&gt;pushStickyButton, &amp;QPushButton::released,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            [<span class="keyword">this</span>]{ QStickyButton::onPushChanged(<span class="keyword">false</span>); });</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    connect(ui-&gt;lockStickyButton, &amp;QPushButton::toggled,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">this</span>, &amp;QStickyButton::onLockToggle);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,10 +229,10 @@ Properties</h2></td></tr>
 <p>Default destructor. </p>
 <p>The system's default destructor. </p>
 
-<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00053">53</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">delete</span> ui;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00055">55</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">delete</span> ui;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -259,11 +261,11 @@ Properties</h2></td></tr>
 <p>Get the checked or pressed status of the sticky button. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current status, checked or being pressed, of the sticky button. </dd></dl>
 
-<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00111">111</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> (ui-&gt;pushStickyButton-&gt;isChecked()                                  |</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            ui-&gt;lockStickyButton-&gt;isChecked());</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00113">113</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> (ui-&gt;pushStickyButton-&gt;isChecked()                                  |</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            ui-&gt;lockStickyButton-&gt;isChecked());</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -297,21 +299,21 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00094">94</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (pressed) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        ui-&gt;pushStickyButton-&gt;setCheckable(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        ui-&gt;pushStickyButton-&gt;setChecked(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        ui-&gt;lockStickyButton-&gt;setChecked(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">/* Need to uncheck before setting it uncheckable. Otherwise the button</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">         * remains checked.</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        ui-&gt;pushStickyButton-&gt;setChecked(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        ui-&gt;pushStickyButton-&gt;setCheckable(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        ui-&gt;lockStickyButton-&gt;setChecked(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00096">96</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (pressed) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        ui-&gt;pushStickyButton-&gt;setCheckable(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        ui-&gt;pushStickyButton-&gt;setChecked(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        ui-&gt;lockStickyButton-&gt;setChecked(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">/* Need to uncheck before setting it uncheckable. Otherwise the button</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">         * remains checked.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        ui-&gt;pushStickyButton-&gt;setChecked(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        ui-&gt;pushStickyButton-&gt;setCheckable(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        ui-&gt;lockStickyButton-&gt;setChecked(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,10 +339,10 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00059">59</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ui-&gt;pushStickyButton-&gt;setText(<a class="code" href="class_q_sticky_button.html#a32a1b2b10c91b85f96e8e01876a81c18">title</a>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<p>Definition at line <a class="el" href="_q_sticky_button_8cpp_source.html#l00061">61</a> of file <a class="el" href="_q_sticky_button_8cpp_source.html">QStickyButton.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ui-&gt;pushStickyButton-&gt;setText(<a class="code" href="class_q_sticky_button.html#a32a1b2b10c91b85f96e8e01876a81c18">title</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="ttc" id="class_q_sticky_button_html_a32a1b2b10c91b85f96e8e01876a81c18"><div class="ttname"><a href="class_q_sticky_button.html#a32a1b2b10c91b85f96e8e01876a81c18">QStickyButton::title</a></div><div class="ttdeci">QString title() const </div><div class="ttdoc">Get the title of the pushbutton. </div></div>
 </div><!-- fragment -->
 </div>
@@ -429,7 +431,7 @@ Properties</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 22 2016 10:02:07 for QStickyButton by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 24 2016 10:48:17 for QStickyButton by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
