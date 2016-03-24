@@ -30,7 +30,8 @@
  *      - ui
  *        - MainWindow.ui
  *        - QStickyButton.ui
- *      Note that the image files (`img/LockClosed.png`, and `img/LockOpened.png`) also need to be placed in the source code directory.
+ *
+ *      Note that the image files (`img/LockClosed.png`, and `img/LockOpened.png`) also need to be placed in the source code directory. When the image files are in a different directory than `img`, the images may need to be re-linked to the resource file.
  *    - Add `QStickyButton.ui`, QStickyButton.h, QStickyButton.cpp, and `QStickyButton.qrc` to the Qt project as shown below.
  *      @image html "AddSourceFile_small.png"
  * -# Create a standard widget in the destination `ui`.

@@ -3,7 +3,7 @@
 [![AppVeyor build status][badge-appveyor]][appveyor]
 [![Travis build status][badge-travis]][travis]
 
-A sticky button, with click and hold capabilities for the [Qt Framework](http://www.qt.io/).
+A sticky button, with click and hold capabilities, for the [Qt Framework](http://www.qt.io/).
 
 ## Documentation
 The documentation can be found at the [documentation webpage][documentation].

@@ -37,10 +37,12 @@ QStickyButton::QStickyButton(QWidget *parent) :
     ui(new Ui::QStickyButton)
 {
     ui->setupUi(this);
-    /* Correct the minimum height of the lockbutton. Normally it jumps to 24,
-     * which results in an ugly difference to the pushbutton.
+    /* Correct the minimum and maximum height of the lockbutton. Normally it
+     * jumps to 24, which results in an ugly difference to the pushbutton's
+     * height (normally 23).
      */
     ui->lockStickyButton->setMinimumHeight(23);
+    ui->lockStickyButton->setMaximumHeight(23);
 
     connect(ui->pushStickyButton, &QPushButton::pressed,
             [this]{ QStickyButton::onPushChanged(true); });
